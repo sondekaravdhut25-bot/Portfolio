@@ -2,12 +2,12 @@
 
 
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Projects from './pages/Projects';
-import Home from './pages/Home';
-import Contact from './pages/Contact';
-import AdminLogin from './pages/AdminLogin'; 
-import Education from  './pages/Education';
-import AdminDashboard from './pages/AdminDashboard';
+import Projects from './pages/projects.jsx';
+import Home from './pages/home.jsx';
+import Contact from './pages/contact.jsx';
+import AdminLogin from './pages/AdminLogin.jsx'; 
+import Education from  './pages/Education.jsx';
+import AdminDashboard from './pages/AdminDashboard.jsx';
 import './index.css'; 
 
 function App() {
