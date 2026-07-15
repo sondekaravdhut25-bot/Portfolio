@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import server from '../environment';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ export default function Contact() {
 
     try {
       // POST request to your local backend
-      await axios.post('http://localhost:5000/api/contact', formData);
+      await axios.post(`${server}/api/contact`, formData);
       
       setStatus({ submitting: false, success: true, error: null });
       setFormData({ name: '', email: '', message: '' }); // Clear form

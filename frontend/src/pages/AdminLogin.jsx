@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import server from '../environment';
 
 export default function AdminLogin() {
   const [password, setPassword] = useState('');
@@ -10,7 +11,7 @@ export default function AdminLogin() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { password });
+      const response = await axios.post(`${server}/api/auth/login`, { password });
       // Store token in localStorage
       localStorage.setItem('adminToken', response.data.token);
       // Redirect to dashboard

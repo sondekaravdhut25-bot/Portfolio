@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import server from '../environment';
 
 export default function AdminDashboard() {
   const [messages, setMessages] = useState([]);
@@ -19,7 +20,7 @@ export default function AdminDashboard() {
       }
 
       try {
-        const response = await axios.get('http://localhost:5000/api/contact/messages', {
+        const response = await axios.get(`${server}/api/contact/messages`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setMessages(response.data);
@@ -41,7 +42,7 @@ export default function AdminDashboard() {
   const handleDelete = async (id) => {
     const token = localStorage.getItem('adminToken');
     try {
-      await axios.delete(`http://localhost:5000/api/contact/messages/${id}`, {
+      await axios.delete(`${server}/api/contact/messages/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

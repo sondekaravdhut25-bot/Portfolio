@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ExternalLink } from 'lucide-react';
 import { FaGithub } from "react-icons/fa";
+import server from '../environment';
 // import { ExternalLink, Home  } from 'lucide-react';
 
 export default function Projects() {
@@ -13,7 +14,7 @@ export default function Projects() {
     // Fetch data from your Express backend
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/projects');
+        const response = await axios.get(`${server}/api/projects`);
         setProjects(response.data);
         setLoading(false);
       } catch (err) {
