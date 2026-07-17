@@ -17,11 +17,14 @@ const nodemailer = require('nodemailer');
 // 1. Configure the NodeMailer Transporter (Strict Configuration)
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
-  port: 465,
-  secure: true, // true for 465, enforces SSL
+  port: 587, // Changed from 465 to 587
+  secure: false, // Must be false for port 587
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
+  },
+  tls: {
+    rejectUnauthorized: false // Bypasses strict SSL certificate checks on cloud servers
   }
 });
 
