@@ -4,9 +4,21 @@ const Message = require('../models/Message');
 const auth = require('../middleware/auth'); // Import the middleware
 const nodemailer = require('nodemailer');
 
-// 1. Configure the NodeMailer Transporter
+ // 1. Configure the NodeMailer Transporter
+// const transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: process.env.EMAIL_USER,
+//     pass: process.env.EMAIL_PASS
+//   }
+// });
+
+//update
+// 1. Configure the NodeMailer Transporter (Strict Configuration)
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // true for 465, enforces SSL
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
