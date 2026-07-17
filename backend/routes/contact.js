@@ -3,10 +3,7 @@ const router = express.Router();
 const Message = require('../models/Message');
 const auth = require('../middleware/auth'); // Import the middleware
 const nodemailer = require('nodemailer');
-const dns = require('dns'); 
 
-// 2. Force Node.js to use IPv4 instead of IPv6 to prevent ENETUNREACH errors on Render
-dns.setDefaultResultOrder('ipv4first');
 
  // 1. Configure the NodeMailer Transporter
 // const transporter = nodemailer.createTransport({
@@ -29,7 +26,8 @@ const transporter = nodemailer.createTransport({
   },
   tls: {
     rejectUnauthorized: false // Bypasses strict SSL certificate checks on cloud servers
-  }
+  },
+  family: 4
 });
 
 // POST a new contact message (Public)
