@@ -1,4 +1,4 @@
-const IS_PROD=false;
+const IS_PROD=true;
 
 const server=IS_PROD ? "https://avdhuts-portfolio.onrender.com" : "http://localhost:5000";
 
