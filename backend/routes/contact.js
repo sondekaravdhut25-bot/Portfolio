@@ -45,8 +45,8 @@ router.post('/', async (req, res) => {
       text: `You have received a new message from your portfolio website.\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`
     };
 
-      const verify=await transporter.verify();
-      console.log("verify message "+verify); 
+      // const verify=await transporter.verify();
+      // console.log("verify message "+verify); 
     // 4. Send the Email
     const info = await transporter.sendMail(mailOptions);
 
