@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
     };
 
       await transporter.verify();
-      console.log("SMTP is ready");
+      console.log("SMTP is ready."); 
     // 4. Send the Email
     const info = await transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
