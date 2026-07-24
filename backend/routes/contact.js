@@ -23,11 +23,7 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
-  },
-  tls: {
-    rejectUnauthorized: false // Bypasses strict SSL certificate checks on cloud servers
-  },
-  family: 4
+  }
 });
 
 // POST a new contact message (Public)
@@ -39,6 +35,8 @@ router.post('/', async (req, res) => {
     const newMessage = new Message({ name, email, message });
     const savedMessage = await newMessage.save();
 
+     
+
     // 3. Setup the Email Options
     const mailOptions = {
       from: process.env.EMAIL_USER,
@@ -47,8 +45,10 @@ router.post('/', async (req, res) => {
       text: `You have received a new message from your portfolio website.\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`
     };
 
+      await transporter.verify();
+      console.log("SMTP is ready");
     // 4. Send the Email
-    await transporter.sendMail(mailOptions, (error, info) => {
+    const info = await transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log('Error sending email:', error);
         // We still return 201 because the message saved to the DB successfully
