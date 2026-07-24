@@ -45,19 +45,18 @@ router.post('/', async (req, res) => {
       text: `You have received a new message from your portfolio website.\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`
     };
 
-      // const verify=await transporter.verify();
-      // console.log("verify message "+verify); 
+  
     // 4. Send the Email
-    const info = await transporter.sendMail(mailOptions);
+    transporter.sendMail(mailOptions,(error, info) => {
+      if (error) {
+        console.log('Error sending email:', error);
+        // We still return 201 because the message saved to the DB successfully
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
 
-    // , (error, info) => {
-    //   if (error) {
-    //     console.log('Error sending email:', error);
-    //     // We still return 201 because the message saved to the DB successfully
-    //   } else {
-    //     console.log('Email sent: ' + info.response);
-    //   }
-    // }
+ 
 
     res.status(201).json(savedMessage);
   } catch (err) {
