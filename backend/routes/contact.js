@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
     };
 
     // 4. Send the Email
-    transporter.sendMail(mailOptions, (error, info) => {
+    await transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log('Error sending email:', error);
         // We still return 201 because the message saved to the DB successfully
