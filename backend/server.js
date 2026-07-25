@@ -13,7 +13,7 @@ const limiter = rateLimit({
 });
 
 const corsOptions = {
-  origin: 'https://avdhut-portfolio.onrender.com/', 
+  origin: 'https://avdhut-portfolio.onrender.com', 
   optionsSuccessStatus: 200
 };
 
