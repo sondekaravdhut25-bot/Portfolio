@@ -2,12 +2,25 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
-
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const app = express();
 
-// Middleware
-app.use(cors());
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, 
+  max: 100,
+  message: 'Too many requests from this IP, please try again later.'
+});
+
+const corsOptions = {
+  origin: 'https://avdhut-portfolio.onrender.com/', 
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
+app.use(helmet());
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI)
@@ -21,7 +34,7 @@ const authRoutes = require('./routes/auth');
 
 
 app.use('/api/projects', projectRoutes);
-app.use('/api/contact', contactRoutes);
+app.use('/api/contact', limiter, contactRoutes);
 app.use('/api/auth', authRoutes);
 
 // Start Server
