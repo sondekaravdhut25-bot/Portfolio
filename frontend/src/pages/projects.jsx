@@ -73,7 +73,7 @@ export default function Projects() {
                       <ExternalLink size={18} /> Live Demo
                     </a>
                   )}
-                  <a href="https://github.com/sondekaravdhut25-bot/major-project" className="link-button">
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="link-button">
                     <FaGithub   size={18} /> Code
                   </a>
                 </div>
