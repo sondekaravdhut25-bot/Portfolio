@@ -20,7 +20,11 @@ const ProjectSchema = new mongoose.Schema({
   liveSiteUrl: { 
     type: String, 
     required: false 
-  }
+  },
+  githubUrl: { 
+    type: String, 
+    required: false
+  },
 });
 
 module.exports = mongoose.model('Project', ProjectSchema);
