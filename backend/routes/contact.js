@@ -18,18 +18,18 @@ router.post('/', async (req, res) => {
     const savedMessage = await newMessage.save();
 
 
-    await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>",
-      to: process.env.OWNER_EMAIL,
-      subject: `New Portfolio Message from ${name}`,
-      text: `
-          Name: ${name}
+  //   await resend.emails.send({
+  //     from: "Portfolio <onboarding@resend.dev>",
+  //     to: process.env.OWNER_EMAIL,
+  //     subject: `New Portfolio Message from ${name}`,
+  //     text: `
+  //         Name: ${name}
 
-          Email: ${email}
+  //         Email: ${email}
 
-          Message:
-          ${message}`,
-  });
+  //         Message:
+  //         ${message}`,
+  // });
  
 
     res.status(201).json(savedMessage);
