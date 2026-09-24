@@ -14,8 +14,48 @@ export default function Projects() {
     // Fetch data from your Express backend
     const fetchProjects = async () => {
       try {
-        const response = await axios.get(`${server}/api/projects`);
-        setProjects(response.data);
+        const response = [{
+              "title": "Property Rental Platform",
+              "description": "A full-stack property rental platform where users can browse, list, edit, and manage rental properties. Features include user authentication, image uploads, property search, and responsive design for a seamless booking experience.",
+              "techStack": [
+                "Node.js",
+                "Express",
+                "MongoDB",
+                "Cloudinary",
+                "javaScript"
+              ],
+              "imageUrl": "https://res.cloudinary.com/dmrhficxx/image/upload/v1784107053/Screenshot_2026-07-15_144718_dsjkyv.png",
+              "liveSiteUrl": "https://major-project-fwkw.onrender.com/listings",
+              "githubUrl": "https://github.com/sondekaravdhut25-bot/Portfolio.git"
+            },
+            {
+              "title": "TODO Management App",
+              "description": "A responsive TODO management application that allows users to create, update, delete, and manage tasks efficiently. Features include task status management, a clean user interface, and responsive design for a smooth experience across devices.",
+              "techStack": [
+                "React.js",
+                "Vite",
+                "JavaScript",
+                "CSS"
+              ],
+              "imageUrl": "https://res.cloudinary.com/dmrhficxx/image/upload/v1786605313/Screenshot_2026-08-13_124209_gfq7md.png",
+              "liveSiteUrl": "https://sondekaravdhut25-bot.github.io/todo-react-app/",
+              "githubUrl": "https://github.com/sondekaravdhut25-bot/todo-react-app.git"
+            },
+            {
+              "title": "Snip - URL Shortener",
+              "description": "A full-stack URL shortening platform built with the MERN stack that allows users to create, manage, and share short URLs efficiently.",
+              "techStack": [
+                "MongoDB",
+                "Express.js",
+                "React",
+                "Node.js",
+                "JavaScript"
+              ],
+              "imageUrl": "https://res.cloudinary.com/dmrhficxx/image/upload/v1788464945/Screenshot_2026-09-04_011854_jxsthw.png",
+              "liveSiteUrl": "https://snip-f9d3.onrender.com/",
+              "githubUrl": "https://github.com/sondekaravdhut25-bot/snip"
+            }];
+        setProjects(response);
         setLoading(false);
       } catch (err) {
         setError('Failed to fetch projects. Is the backend running?');
@@ -44,8 +84,8 @@ export default function Projects() {
             No projects found. Add some to your database!
           </p>
         ) : (
-          projects.map((project) => (
-            <div key={project._id} className="card">
+          projects.map((project,index) => (
+            <div key={index} className="card">
               
               <div className="card-image">
                 {project.imageUrl ? (

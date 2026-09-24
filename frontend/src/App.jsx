@@ -25,9 +25,16 @@ function App() {
               <Link to="/">Home</Link>
               <Link to="/education">Education</Link>
               <Link to="/projects">Projects</Link>
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact" 
+              style={{
+                  backgroundColor: '#2563eb', 
+                  color: 'white', 
+                  padding: '0.4rem 1rem', 
+                  borderRadius: '6px',
+                  fontWeight: 'bold'
+                }}>Contact</Link>
 
-              <Link 
+              {/* <Link 
                 to="/admin" 
                 style={{
                   backgroundColor: '#2563eb', 
@@ -38,7 +45,7 @@ function App() {
                 }}
               >
                 Admin
-              </Link>
+              </Link> */}
             </div>
           </div>
         </nav>
