@@ -38,7 +38,7 @@ export default function Home() {
             <a href="https://github.com/sondekaravdhut25-bot" target="_blank" rel="noopener noreferrer">
               <FaGithub size={18} /> GitHub
             </a>
-            <a href="www.linkedin.com/in/avdhut-sondekar" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/avdhut-sondekar/" target="_blank" rel="noopener noreferrer">
               <FaLinkedin size={18} /> LinkedIn
             </a>
           </div>
