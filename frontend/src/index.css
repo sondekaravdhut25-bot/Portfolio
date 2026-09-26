@@ -204,37 +204,54 @@ img {
   border: none;
   color: var(--ink);
   cursor: pointer;
-  padding: 0.4rem;
+  padding: 0.6rem;
+  margin: -0.6rem;
 }
 
 @media (max-width: 800px) {
   .nav-toggle {
     display: flex;
+    order: 2;
   }
 
+  .nav-content {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 0.85rem 0;
+  }
+
+  .nav-logo {
+    order: 1;
+  }
+
+  /* Closed by default: zero padding AND zero max-height, so no
+     sliver of padding/border is left visible (max-height alone
+     does not collapse a box's own padding). */
   .nav-links {
-    position: absolute;
-    top: var(--header-h);
-    left: 0;
-    right: 0;
+    order: 3;
+    flex-basis: 100%;
     background-color: var(--surface);
-    border-bottom: 1px solid var(--border);
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
-    padding: 0.5rem 1.5rem 1.25rem;
+    padding: 0;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s ease;
+    transition: max-height 0.25s ease, padding 0.25s ease;
   }
 
+  /* In normal document flow (not position:absolute), so opening
+     the menu pushes the page content down instead of covering it. */
   .nav-links.open {
-    max-height: 20rem;
+    max-height: 24rem;
+    padding: 0.5rem 0 1rem;
+    border-top: 1px solid var(--border);
+    margin-top: 0.6rem;
   }
 
   .nav-links a {
     width: 100%;
-    padding: 0.75rem 0;
+    padding: 0.85rem 0;
     border-bottom: 1px solid var(--border);
   }
 
@@ -836,6 +853,10 @@ img {
 }
 
 @media (max-width: 640px) {
+  .main-content {
+    padding: 2rem 0;
+  }
+
   .hero-buttons {
     flex-direction: column;
     align-items: stretch;
@@ -849,6 +870,7 @@ img {
   .footer-content {
     flex-direction: column;
     text-align: center;
+    gap: 1.25rem;
   }
 
   .timeline {
@@ -858,4 +880,23 @@ img {
   .timeline-item::before {
     left: -1.5rem;
   }
+
+  .timeline-card {
+    padding: 1.35rem 1.25rem;
+  }
+
+  .contact-grid {
+    gap: 2.25rem;
+  }
+
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .code-panel-body {
+    font-size: 0.8rem;
+    padding: 1.25rem 1rem;
+  }
 }
+
+

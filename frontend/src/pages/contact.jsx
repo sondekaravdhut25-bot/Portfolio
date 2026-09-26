@@ -229,7 +229,7 @@ export default function Contact() {
 
           <div className="contact-fact">
             <Mail size={18} />
-            <a href="mailto:your.email@example.com">your.email@example.com</a>
+            <a href="mailto:sondekaravdhut25@gmail.com">sondekaravdhut25@gmail.com</a>
           </div>
           <div className="contact-fact">
             <MapPin size={18} />
